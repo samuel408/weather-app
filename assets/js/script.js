@@ -1,7 +1,9 @@
 var date = moment().format("l");
 $("#date").html(date);
 var search = document.querySelector("#search-btn");
-var cities = []; 
+var searchHistory =document.querySelector("#history")
+var cities = [];
+var historyFunction = document.querySelector("list-group-item") ;
     var information = document.querySelector("#info");
 
     //query selectors for 5 day forcast 
@@ -10,9 +12,8 @@ var cities = [];
     var dayThree = document.querySelector("#three");
     var dayFour = document.querySelector("#four");
     var dayFive = document.querySelector("#five");
-    //dates for five day forcast
-    // var dateOne = moment().add(1,'days').calendar();
-    // $("#date1").html(dateOne)
+    // creates a list of items in the local storage
+ 
    
 
 //grabs city and stores it in local storage
@@ -21,7 +22,18 @@ function newCity(){
     var name = document.querySelector("#search-bar").value;
 
 getCity(name);
+var i =0;
 localStorage.setItem("cities", JSON.stringify(name));
+var currentCity= JSON.parse(localStorage.getItem("cities"));
+    var newCity = document.createElement("li");
+    newCity.setAttribute('class', 'list-group-item ');
+    newCity.setAttribute('id', 'search'+i)+'';
+
+
+    newCity.innerHTML = currentCity;
+    searchHistory.appendChild(newCity);
+i ++;
+console.log(i);
 }
 // var city =$("")
 //gets city name and creates API for the city
@@ -38,7 +50,7 @@ var getCity = function(city) {
         if (response.ok) {
             //call display function
           response.json().then(function(data) {
-            display(data, city);
+            display(data);
           });
         } else {
           alert("Error: " + response.statusText);
@@ -50,10 +62,14 @@ var getCity = function(city) {
 
   };
 
+
+
+//changes  array froms strings back to nomral data types and displays them
+
+
 //display what was grabbed by API
-  var display = function(data, city) {
-        //changes  array froms strings back to nomral data types
-        cities = JSON.parse(localStorage.getItem("cities"));
+  var display = function(data) {
+        
  
     var cityName = document.querySelector("#city-name");
 cityName.innerHTML = data.name ;
@@ -196,7 +212,6 @@ dayFive.appendChild(fifthh);
   var thirdh = document.createElement("p");
   var fourthh  = document.createElement("p");
   var fifthh  = document.createElement("p");
-
 
 
 
