@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+
+
+
+
+</head>
+
+<body>
+    <header class="bg-dark">
+<h3 class="text-light center">
+    Weather Dashboard
+</h3>
+    </header>
+    <div class="container">
+      
+      
+        
+        <div class="row">
+          <div class="col-4">
+            <div class="card "   style="width: 18rem;">
+                <div class="card-header">
+                    <p style="font-size:large; font-weight: 100;">Search for a city:</p>
+                    <input  class="search" id="search-bar" placeholder="City" ></input>
+                    <button id="search-btn" type="submit" class=" col-2 btn btn-primary"><span class="oi oi-magnifying-glass"></span></button>
+                </div>
+                    <ul id="history" class="list-group list-group-flush">
+                       <li class ="list-group-item">
+
+                       </li>
+                      </ul>
+                </div>
+          </div>
+          <div class="col-8">
+            <div class="card">
+                <div id="info" class="card-body">
+                    
+                  <h1 id="city-name"> Search for a city !</h1>
+                  <span class="oi oi-cloudy"></span>
+                  <h2 id="date"> </h2>
+
+                 
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+   
+    
+ 
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
