@@ -40,17 +40,48 @@ var getCity = function( city) {
   var display = function(data, city) {
         //changes  array froms strings back to nomral data types
         cities = JSON.parse(localStorage.getItem("cities"));
-      
  
     var cityName = document.querySelector("#city-name");
-cityName.innerHTML = city ;
+cityName.innerHTML = data.name ;
     // check if api returned any repos
 
 
 temp.innerHTML = "temperture: " + data.main.temp + " F" ;
 hum.innerHTML = "humidity: " + data.main.humidity + "%";
 wind.innerHTML = "wind speed: " + data.wind.speed + " MPH";
-uv.innerHTML = "UV Index:" + 22;
+
+//fetch UV index Link
+var UVLink = "http://api.openweathermap.org/data/2.5/uvi?lat="+ data.coord.lat+ "&lon="+ data.coord.lon+"&appid=105446e2c6e979033bfda6375ab0f93c"
+fetch(UVLink)
+      .then(function(response) {
+        // request was successful
+        if (response.ok) {
+            //call display function
+          response.json().then(function(data) {
+            uv.innerHTML = "UV Index: " + data.value;
+            // uvi scale indicator
+        if (data.value < 3){
+          uv.setAttribute('class', 'text-success')
+          
+        }
+        else if (data.value < 6 && data.value >= 3){
+          uv.setAttribute('class', 'text-warning')
+
+
+        }
+        else{
+          uv.setAttribute('class', 'text-danger')
+
+        }
+
+          });
+        } else {
+          alert("Error: " + response.statusText);
+        }
+      })
+      .catch(function(error) {
+        alert("Unable to connect to GitHub");
+      });
 
 information.appendChild(temp);
 information.appendChild(hum);
