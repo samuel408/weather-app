@@ -43,8 +43,12 @@ var getCity = function( city) {
  
     var cityName = document.querySelector("#city-name");
 cityName.innerHTML = data.name ;
-    // check if api returned any repos
+//icon display
+var icon = data.weather[0].icon;
+var iconLink = "http://openweathermap.org/img/w/" + icon + ".png";
+$('#wicon').attr('src', iconLink);
 
+//displaying content
 
 temp.innerHTML = "temperture: " + data.main.temp + " F" ;
 hum.innerHTML = "humidity: " + data.main.humidity + "%";
