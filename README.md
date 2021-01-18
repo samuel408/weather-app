@@ -5,5 +5,5 @@ the UV index displays  green for a good UV index rating, orange for moderate, an
 
 there is also a search history that logs every input in the search bar.
 
-![Alt text](assets/images/weather-screen.jpg"weather app")
+![Alt text](assets/images/weather-screen.jpg "weather app")
 [link]https://samuel408.github.io/weather-app/
